@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Welcome to RNIR! | NIR data processing with R</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="RNIR" href="https://guifh.github.io/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> RNIR</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="https://github.com/guifh/RNIR" target="_blank">GitHub</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:guillaume.hans@gmail.com?subject=RNIR feedback&body=I have some feedback about the Welcome to RNIR! page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Welcome to RNIR!">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Table Of Content </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Datasets</a>
+        <ul>
+            
+            
+            
+            <li><a href="PhazirASD.html">Phazir & ASD data</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Loading files and NIR spectra</a>
+        <ul>
+            
+            
+            
+            <li><a href="CSVfiles.html">From CSV files</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="SPCfiles.html">From SPC files</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="SQLdatabase.html">From an SQL database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Basic NIR spectra processing</a>
+        <ul>
+            
+            
+            
+            <li><a href="PlotSpectra.html">Plotting the spectra</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="Smoothing.html">Smoothing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="SNV.html">SNV</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="Baseline.html">Baseline removal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="MSC.html">MSC</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="Derivative.html">Derivatives</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Advanced processing</a>
+        <ul>
+            
+            
+            
+            <li><a href="PDS.html">PDS</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Modelling</a>
+        <ul>
+            
+            
+            
+            <li><a href="4_Modelling.html">Linear modelling</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="5_nlModelling.html">Non-linear modelling</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="6_Classification.html">Classification</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Welcome to RNIR!</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+
+    
+
+
+    
+
+  <p><br /></p>
+
+<p>RNIR is a series of tutorials on <a href="https://en.wikipedia.org/wiki/Chemometrics">chemometrics</a> and near-infrared (NIR) data analysis with <a href="https://www.r-project.org/">R</a> and <a href="https://www.rstudio.com/">RStudio</a>. R and RStudio are both free and open source.</p>
+
+<p>All the data used in the tutorials can be downloaded from RNIR’s <a href="https://github.com/guifh/RNIR">GitHub</a> repository. This ensures that any given example can be easily reproduced.</p>
+
+<p>We will start by presenting the most common methods employed in NIR spectroscopy for processing NIR spectra and developing prediction models. However, in the future, RNIR will aim at presenting more advanced spectra processing and analysis methods that can be found in the literature, but that are not yet available in R as functions or packages. RNIR will also propose tutorials on the analysis of NIR data in the fields of NIR time-resolved spectroscopy and hyperspectral imaging.</p>
+
+<p>RNIR is written in <a href="http://rmarkdown.rstudio.com/lesson-1.html">Rmarkdown</a>, a plain text formatting syntax designed so that it can be directly converted to HTML. This means it is easy to contribute to RNIR. If you are using R in your NIR research and would like to add your own tutorials on RNIR, feel free to contact me. Any question, comment or suggestion concerning RNIR is also appreciated.</p>
+
+<p>The ultimate goal of RNIR is to facilitate the diffusion of algorithms and chemometric methods used for NIR data analysis by providing direct access to code and reproducible examples.</p>
+
+<p><br /></p>
+
+<p>Thanks for reading!</p>
+
+<p><br /></p>
+
+<p><strong><em>Guillaume Hans</em></strong></p>
+
+<p><em>November 12</em><sup>th</sup><em>, 2018</em></p>
+
+<p><br /></p>
+
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2018 RNIR. All rights reserved. <br />
+ Site last generated: Nov 13, 2018 <br />
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>
