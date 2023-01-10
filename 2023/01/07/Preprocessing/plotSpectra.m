@@ -2,7 +2,6 @@ function     plotSpectra(X,y)
  map = colormap();
  miny = min(y);
  maxy = max(y);
-
  y1 = y - min(y);
  y1 = y1/max(y1)*64;
  cor = [];
